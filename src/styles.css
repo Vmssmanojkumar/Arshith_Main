@@ -174,5 +174,75 @@
     color: var(--brand-gold);
     font-weight: 500;
   }
-  .container-x { @apply mx-auto max-w-7xl px-6 lg:px-10; }
+  .container-x { @apply mx-auto max-w-7xl px-5 sm:px-6 lg:px-10; }
+}
+
+/* ─── Mobile-first responsive enhancements ─── */
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure images and media never overflow */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal overflow globally on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Better touch targets for all interactive elements */
+@media (max-width: 639px) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Scale down oversized serif headings on very small screens */
+  h1 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Tighter padding on small devices for more content room */
+  .container-x {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Fix stat grids — force single column on very small screens */
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Ensure footer text does not overflow */
+  footer h1 {
+    font-size: clamp(2.5rem, 12vw, 10rem) !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .container-x {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Fix the floating interactive nodes on mobile — make them stack better */
+@media (max-width: 767px) {
+  /* Shrink stat grid items on mobile for better fit */
+  .grid.grid-cols-2.lg\:grid-cols-6 > div {
+    padding: 1rem;
+  }
+
+  /* Ensure the marquee gallery items fit on small screens */
+  .w-72 {
+    width: 16rem;
+  }
 }

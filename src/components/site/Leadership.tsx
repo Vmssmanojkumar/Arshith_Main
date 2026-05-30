@@ -16,7 +16,7 @@ export function Leadership() {
               width={800}
               height={1024}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover grayscale"
+              className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-navy-deep)]/80 to-transparent" />
           </div>

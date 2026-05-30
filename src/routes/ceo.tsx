@@ -452,7 +452,7 @@ function CEOProfilePage() {
                 <img
                   src={ceoImage}
                   alt="Farook N - Chairman & CEO"
-                  className="absolute inset-0 h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 transform group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 transform group-hover:scale-105"
                 />
 
                 {/* Subtitle badge in bottom overlay */}

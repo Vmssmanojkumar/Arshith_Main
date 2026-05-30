@@ -88,7 +88,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-12 pt-4 border-t border-neutral-700 flex justify-between items-center relative z-10">
+        <div className="max-w-7xl mx-auto mt-12 pt-4 border-t border-neutral-700 flex flex-col sm:flex-row justify-between items-center gap-2 relative z-10">
           <p className="text-neutral-400 text-sm">© {new Date().getFullYear()} Arshith Group</p>
           <p className="text-sm text-neutral-400">All rights reserved.</p>
         </div>

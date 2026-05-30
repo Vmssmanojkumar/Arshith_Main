@@ -453,7 +453,7 @@ function Page() {
                       src={phase.image}
                       alt={phase.title}
                       loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1200ms]"
+                      className="absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms]"
                     />
                     {/* Shadow overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

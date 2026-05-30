@@ -167,7 +167,7 @@ export function Hero() {
           </div>
 
           {/* Headline with staggered word reveal */}
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-light leading-[0.95] max-w-5xl overflow-hidden">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-light leading-[0.95] max-w-5xl overflow-hidden">
             <span className="hero-word-reveal inline-block">Growth</span>{" "}
             <span className="hero-word-reveal inline-block" style={{ animationDelay: "0.15s" }}>is</span>{" "}
             <span className="hero-word-reveal inline-block italic font-medium" style={{ animationDelay: "0.3s" }}>Value</span>

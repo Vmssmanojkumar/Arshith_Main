@@ -176,7 +176,7 @@ function LeaderDossier({ leader, index }: { leader: any; index: number }) {
             width={800}
             height={1024}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover grayscale transition-transform duration-[1200ms] group-hover:grayscale-0 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
@@ -526,7 +526,7 @@ function LeadershipPage() {
                   src={img} 
                   alt={`Arshith Operations Grid Frame ${idx + 1}`} 
                   loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -544,7 +544,7 @@ function LeadershipPage() {
                   src={img} 
                   alt={`Arshith Operations Grid Frame ${idx + 8}`} 
                   loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
