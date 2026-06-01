@@ -78,9 +78,9 @@ export function Footer() {
               <h3 className="font-serif font-semibold text-sm mb-4">Company</h3>
               <ul className="space-y-3 text-sm text-neutral-300 font-light">
                 <li><Link to="/about" className="hover:text-neutral-400">Our Vision</Link></li>
-                <li className="flex items-center gap-2">
-                  <Link to="/leadership" className="hover:text-neutral-400">Careers</Link>
-                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-green-950 border border-green-300 text-green-300 font-medium">HIRING</span>
+                <li className="flex flex-row items-center gap-2 flex-nowrap whitespace-nowrap">
+                  <Link to="/leadership" className="hover:text-neutral-400 whitespace-nowrap">Careers</Link>
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-green-950 border border-green-300 text-green-300 font-medium whitespace-nowrap">HIRING</span>
                 </li>
                 <li><Link to="/about" className="hover:text-neutral-400">Privacy Policy</Link></li>
               </ul>

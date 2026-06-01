@@ -60,7 +60,7 @@ export function Careers() {
                 Grow With <span className="italic font-medium text-emerald-600">Us</span>
               </h2>
 
-              <p className="text-foreground/80 font-light text-base md:text-lg leading-relaxed">
+              <p className="text-foreground font-normal text-base md:text-lg leading-relaxed">
                 We believe innovation begins with people.
               </p>
 
@@ -83,7 +83,7 @@ export function Careers() {
               </div>
 
               {/* Detail paragraph verbatim */}
-              <p className="text-xs text-foreground/70 leading-relaxed font-light pt-4 border-t border-border/60">
+              <p className="text-xs text-foreground leading-relaxed font-normal pt-4 border-t border-border/60">
                 through internships, training programs, and career opportunities designed to create future-ready professionals.
               </p>
             </div>
@@ -132,7 +132,7 @@ export function Careers() {
                       <h4 className="text-sm font-semibold text-slate-900 font-serif group-hover:text-emerald-700 transition-colors">
                         {step.title}
                       </h4>
-                      <p className="text-xs text-slate-500 font-light mt-1 leading-relaxed">
+                      <p className="text-xs text-slate-700 font-normal mt-1 leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
@@ -141,7 +141,7 @@ export function Careers() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-slate-100 text-[10px] uppercase tracking-widest text-slate-400 font-bold flex items-center gap-2">
+            <div className="mt-8 pt-6 border-t border-slate-100 text-[10px] uppercase tracking-widest text-slate-600 font-bold flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-600" />
               <span>Transparent Recruitment flow</span>
             </div>

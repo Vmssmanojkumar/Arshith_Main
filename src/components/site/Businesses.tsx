@@ -135,18 +135,18 @@ export function Businesses() {
                       {b.title}
                     </h3>
                     
-                    <p className="text-sm text-foreground/75 font-light leading-relaxed mb-6">
+                    <p className="text-sm text-foreground font-normal leading-relaxed mb-6">
                       {b.body}
                     </p>
 
                     {/* Detailed Bullets List */}
                     <div className="border-t border-border/80 pt-6 mb-8">
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/50 mb-3">
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-600 mb-3">
                         Key Highlights
                       </h4>
                       <ul className="space-y-2.5">
                         {b.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex items-start gap-2.5 text-xs text-foreground/70 font-light leading-snug">
+                          <li key={bIdx} className="flex items-start gap-2.5 text-xs text-slate-800 font-normal leading-snug">
                             <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
                             <span>{bullet}</span>
                           </li>

@@ -76,7 +76,9 @@
   --secondary: oklch(0.96 0.01 250);
   --secondary-foreground: oklch(0.25 0.08 260);
   --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.5 0.02 250);
+  --muted-foreground: oklch(0.32 0.02 250);
+  --text-light-override: oklch(0.32 0.02 250);
+  --text-very-light-override: oklch(0.38 0.02 250);
   --accent: oklch(0.72 0.16 55);
   --accent-foreground: oklch(0.99 0 0);
   --destructive: oklch(0.6 0.22 27);
@@ -111,6 +113,12 @@
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-deep: var(--brand-navy-deep);
   --color-brand-gold: var(--brand-gold);
+  --color-slate-500: var(--text-light-override);
+  --color-slate-600: var(--text-light-override);
+  --color-slate-400: var(--text-very-light-override);
+  --color-gray-500: var(--text-light-override);
+  --color-gray-600: var(--text-light-override);
+  --color-gray-400: var(--text-very-light-override);
 }
 
 .dark {
@@ -125,7 +133,9 @@
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
+  --muted-foreground: oklch(0.85 0.04 256.788);
+  --text-light-override: oklch(0.82 0.02 250);
+  --text-very-light-override: oklch(0.88 0.02 250);
   --accent: oklch(0.279 0.041 260.031);
   --accent-foreground: oklch(0.984 0.003 247.858);
   --destructive: oklch(0.704 0.191 22.216);
@@ -159,9 +169,37 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+  
   h1, h2, h3, .font-serif {
     font-family: var(--font-serif);
     letter-spacing: -0.01em;
+  }
+
+  /* Global readability & high-contrast adjustments, especially on mobile */
+  p, span, li {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Global light font weight override to prevent thin illegible text on standard screens */
+  .font-light {
+    font-weight: 400 !important;
+  }
+
+  /* Prevent text with opacity modifiers from becoming too faint */
+  .text-foreground\/50 {
+    color: var(--text-very-light-override) !important;
+    opacity: 0.9 !important;
+  }
+  .text-foreground\/60 {
+    color: var(--text-light-override) !important;
+    opacity: 0.95 !important;
+  }
+  .text-foreground\/70,
+  .text-foreground\/75,
+  .text-foreground\/80 {
+    color: var(--color-foreground) !important;
+    opacity: 1 !important;
   }
 }
 
