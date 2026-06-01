@@ -243,6 +243,12 @@
     min-width: 44px;
   }
 
+  /* Exclude footer links from 44px touch targets to allow elegant vertical list spacing and perfect horizontal badge alignment */
+  footer a {
+    min-height: auto !important;
+    min-width: auto !important;
+  }
+
   /* Scale down oversized serif headings on very small screens */
   h1 {
     word-break: break-word;
