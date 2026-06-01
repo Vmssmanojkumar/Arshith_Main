@@ -4,7 +4,7 @@ import { Instagram, Linkedin, Youtube } from "lucide-react";
 export function Footer() {
   return (
     <div className="bg-background pt-20">
-      <footer className="bg-[#131314] w-full text-white pt-8 lg:pt-12 px-4 sm:px-8 md:px-16 lg:px-28 rounded-tl-3xl rounded-tr-3xl overflow-hidden relative">
+      <footer className="bg-[#131314] w-full text-white pt-8 lg:pt-12 pb-8 lg:pb-12 px-4 sm:px-8 md:px-16 lg:px-28 rounded-tl-3xl rounded-tr-3xl overflow-hidden relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-6 gap-8 md:gap-12">
           <div className="lg:col-span-3 space-y-6">
             <Link to="/" className="block">
@@ -95,7 +95,7 @@ export function Footer() {
         
         <div className="relative">
           <div className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-3xl h-full max-h-64 bg-emerald-500 rounded-full blur-[170px] pointer-events-none opacity-20"></div>
-          <h1 className="text-center font-serif font-extrabold leading-[0.7] text-white/20 text-[clamp(3rem,15vw,15rem)] mt-6 select-none pointer-events-none translate-y-4">
+          <h1 className="text-center font-serif font-extrabold leading-none text-white/35 text-[clamp(3rem,15vw,15rem)] mt-6 select-none pointer-events-none translate-y-0">
             ARSHITH
           </h1>
         </div>
