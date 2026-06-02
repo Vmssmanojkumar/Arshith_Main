@@ -5,6 +5,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import ceo from "@/assets/ceo.png";
 import president from "@/assets/MD.jpeg";
+import teamImage from "@/assets/Team.jpeg";
 import { Marquee } from "@/components/ui/marquee";
 
 // Import all 13 marquee images from src/assets/marque
@@ -37,7 +38,8 @@ import {
   Briefcase,
   ExternalLink,
   MessageSquare,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Check
 } from "lucide-react";
 
 export const Route = createFileRoute("/leadership")({
@@ -395,30 +397,62 @@ const row1Images = [m01, m02, m03, m04, m05, m06, m07];
 const row2Images = [m08, m09, m10, m11, m12, m13, m01];
 
 function LeadershipPage() {
+  const [activeConsoleTab, setActiveConsoleTab] = useState<"scale" | "internships" | "slas">("scale");
+
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-600 selection:text-white relative overflow-x-hidden">
       <Nav forceSolid />
 
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes tech-scan {
+          0% { top: -5%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { top: 105%; opacity: 0; }
+        }
+        .animate-tech-scan {
+          animation: tech-scan 3.5s cubic-bezier(0.15, 0.85, 0.45, 1) infinite;
+        }
+        @keyframes subtle-glow {
+          0%, 100% { filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.15)); }
+          50% { filter: drop-shadow(0 0 25px rgba(16, 185, 129, 0.35)); }
+        }
+        .animate-subtle-glow {
+          animation: subtle-glow 6s ease-in-out infinite;
+        }
+        @keyframes rotate-slow {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .animate-rotate-slow {
+          animation: rotate-slow 25s linear infinite;
+        }
+      `}} />
+
       {/* Entirely Redesigned Interactive Parallax Hero */}
-      <section className="relative pt-36 pb-24 md:pt-48 md:pb-36 bg-[#0B0F19] text-white overflow-hidden flex items-center min-h-[90vh]">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#0B0F19] text-white overflow-hidden flex items-center min-h-[95vh]">
         <HeroParticleBackground />
         
-        {/* Floating Organic Glowing Orbs */}
-        <div className="absolute top-1/4 left-1/10 h-[400px] w-[400px] rounded-full bg-emerald-500/10 blur-[120px] pointer-events-none animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/10 h-[500px] w-[500px] rounded-full bg-[var(--brand-gold)]/10 blur-[130px] pointer-events-none" />
+        {/* Dynamic Glowing Blobs Backdrop */}
+        <div className="absolute top-1/4 left-1/10 h-[450px] w-[450px] rounded-full bg-emerald-500/10 blur-[130px] pointer-events-none animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/10 h-[550px] w-[550px] rounded-full bg-[var(--brand-gold)]/10 blur-[140px] pointer-events-none" />
+        
+        {/* Cyberpunk Grid Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b0a_1px,transparent_1px),linear-gradient(to_bottom,#1e293b0a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
         <div className="container-x w-full relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Hero Left Content */}
-            <div className="lg:col-span-7 flex flex-col justify-center">
+            <div className="lg:col-span-6 flex flex-col justify-center">
               <motion.div
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-6 w-fit"
               >
-                <Sparkles className="h-3.5 w-3.5 animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                <Sparkles className="h-3.5 w-3.5" />
                 <span>Executive Council Board</span>
               </motion.div>
 
@@ -426,9 +460,9 @@ function LeadershipPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="font-serif text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-6"
+                className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white mb-6"
               >
-                The architects of <span className="italic font-medium text-[var(--brand-gold)]">digital value</span> & sustainable growth.
+                The architects of <span className="bg-gradient-to-r from-emerald-400 via-[var(--brand-gold)] to-amber-300 bg-clip-text text-transparent italic font-medium">digital value</span> & sustainable growth.
               </motion.h1>
 
               <motion.p
@@ -437,67 +471,227 @@ function LeadershipPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-slate-300 text-sm md:text-base font-light max-w-xl mb-8 leading-relaxed"
               >
-                Meet the executive leaders steering the corporate path of Arshith Group — consolidating grassroots organic commerce, automating cloud systems pipelines, and cultivating placement placement developer internships.
+                Meet the executive leaders steering the corporate path of Arshith Group — consolidating grassroots <span className="text-[var(--brand-gold)] font-medium">organic commerce</span>, automating <span className="text-emerald-400 font-medium">cloud systems</span> pipelines, and cultivating placement placement <span className="text-emerald-400 font-medium">developer internships</span>.
               </motion.p>
+
+              {/* Call to Action buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.25 }}
+                className="flex flex-wrap gap-4 items-center mb-8 lg:mb-0"
+              >
+                <a
+                  href="#executive-board"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all duration-300 shadow-lg shadow-emerald-900/30 group"
+                >
+                  <span>Meet the Directors</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="#operational-gallery"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 font-semibold text-sm transition-all duration-300 border border-slate-700/50 backdrop-blur-sm"
+                >
+                  <span>View Operations</span>
+                </a>
+              </motion.div>
             </div>
 
-            {/* Hero Right Credentials Card (Glassmorphic) */}
-            <div className="lg:col-span-5 flex justify-center">
+            {/* Hero Right: Framed Team Photo */}
+            <div className="lg:col-span-6 flex justify-center relative">
+              {/* Spinning Tech Dial Behind Card */}
+              <div className="absolute -top-10 -right-10 w-64 h-64 rounded-full border border-dashed border-emerald-500/10 animate-rotate-slow pointer-events-none z-0 hidden lg:block" />
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full border border-dotted border-[var(--brand-gold)]/10 animate-rotate-slow pointer-events-none z-0 hidden lg:block" style={{ animationDirection: 'reverse' }} />
+
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="w-full max-w-[420px] p-8 rounded-2xl border border-slate-800 bg-slate-900/80 shadow-2xl backdrop-blur-md relative overflow-hidden"
+                className="w-full max-w-[480px] lg:max-w-none p-3.5 rounded-3xl border border-slate-800 bg-slate-900/30 shadow-2xl backdrop-blur-sm relative overflow-hidden group z-10 animate-subtle-glow"
               >
-                {/* Visual Header */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />
-                    <span className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">board-summary-console</span>
-                  </div>
-                  <Briefcase className="h-4.5 w-4.5 text-[var(--brand-gold)]" />
+                {/* Dynamic Scanline Overlay */}
+                <div className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-tech-scan pointer-events-none z-20" />
+
+                {/* Viewfinder Corner Brackets */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[var(--brand-gold)] z-30" />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[var(--brand-gold)] z-30" />
+                <div className="absolute bottom-16 left-4 w-4 h-4 border-b-2 border-l-2 border-[var(--brand-gold)] z-30" />
+                <div className="absolute bottom-16 right-4 w-4 h-4 border-b-2 border-r-2 border-[var(--brand-gold)] z-30" />
+
+                <div className="relative aspect-[4/5] md:aspect-[5/6] lg:aspect-[4/5] overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950">
+                  <img
+                    src={teamImage}
+                    alt="Arshith Group Executive Council Team"
+                    className="w-full h-full object-cover object-top transition-transform duration-[2000ms] ease-out group-hover:scale-105"
+                    loading="eager"
+                  />
+                  {/* Premium overlay gradients */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent z-10" />
+                  
+                  {/* Floating active status badge */}
+                  <span className="absolute top-5 left-5 text-[9px] font-mono uppercase tracking-widest bg-emerald-500/90 text-white px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-md z-20">
+                    <span className="h-1.5 w-1.5 rounded-full bg-white animate-ping" />
+                    Board Console // LIVE
+                  </span>
                 </div>
 
-                {/* Corporate credentials grid */}
-                <div className="space-y-6">
-                  <div className="grid grid-cols-3 gap-4">
-                    {[
-                      { num: "2", label: "Executive Directors", sub: "CEO & MD" },
-                      { num: "20+", label: "Years Experience", sub: "Combined" },
-                      { num: "3", label: "Operating Sectors", sub: "Synergetic" }
-                    ].map((cIdx, i) => (
-                      <div key={i} className="text-center p-3 rounded-lg bg-black/30 border border-slate-850">
-                        <span className="font-serif text-3xl font-bold text-[var(--brand-gold)] block">{cIdx.num}</span>
-                        <span className="text-[9px] font-bold text-slate-350 block mt-1 uppercase tracking-wider">{cIdx.label}</span>
-                        <span className="text-[8px] text-slate-500 block mt-0.5 font-light">{cIdx.sub}</span>
-                      </div>
-                    ))}
+                {/* Caption Bar */}
+                <div className="mt-4 px-3 py-2 flex items-center justify-between border-t border-slate-800/60 pt-3 relative z-10">
+                  <div>
+                    <h3 className="text-white font-serif text-sm font-semibold tracking-wide">Executive Leadership Council</h3>
+                    <p className="text-slate-450 text-[10px] font-sans uppercase tracking-widest mt-0.5">Arshith Group Board & Core Team</p>
                   </div>
-
-                  {/* Bullet Highlights */}
-                  <div className="space-y-3 pt-4 border-t border-slate-800">
-                    {[
-                      "99.95% consolidated operational uptime SLA",
-                      "500+ active workforce placement and field staff",
-                      "500+ developer interns placed through Avanthi alliance"
-                    ].map((bullet, index) => (
-                      <div key={index} className="flex items-start gap-2.5 text-slate-400 text-xs leading-relaxed font-light">
-                        <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{bullet}</span>
-                      </div>
-                    ))}
+                  <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                    <Users className="h-4 w-4" />
                   </div>
                 </div>
-
               </motion.div>
             </div>
 
           </div>
+
+          {/* Interactive Operations Console Bottom Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-20 pt-10 border-t border-slate-800/60"
+          >
+            {/* Console Header & Tab Switcher */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[10px] text-emerald-400 uppercase tracking-widest font-mono font-bold">interactive dashboard console</span>
+                </div>
+                <h3 className="text-white text-lg font-serif">Arshith Operations Index</h3>
+              </div>
+
+              <div className="flex flex-wrap gap-2 p-1 rounded-xl bg-slate-950 border border-slate-800/80 w-fit">
+                {[
+                  { id: "scale", label: "Scale Metrics", icon: TrendingUp },
+                  { id: "internships", label: "Alliances & Interns", icon: Users },
+                  { id: "slas", label: "Operational SLAs", icon: ShieldCheck }
+                ].map((tab) => {
+                  const Icon = tab.icon;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveConsoleTab(tab.id as any)}
+                      className={`px-4 py-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all duration-300 ${
+                        activeConsoleTab === tab.id
+                          ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/30 border border-emerald-500/20"
+                          : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/40"
+                      }`}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                      <span>{tab.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Dynamic Console Dashboard Display */}
+            <div className="bg-slate-950/40 border border-slate-850 p-6 rounded-2xl backdrop-blur-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-emerald-500/5 to-transparent pointer-events-none" />
+              
+              <AnimatePresence mode="wait">
+                {activeConsoleTab === "scale" && (
+                  <motion.div
+                    key="scale"
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 15 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid md:grid-cols-3 gap-6"
+                  >
+                    {[
+                      { num: "2", title: "Executive Directors", sub: "Founder Farook Nurubhasha & MD Pallavi Nelli guiding day-to-day scaling.", color: "text-[var(--brand-gold)]" },
+                      { num: "20+", title: "Years Experience", sub: "Combined corporate management experience across IT architectures & rural logistics.", color: "text-emerald-400" },
+                      { num: "3", title: "Operating Sectors", sub: "Unified corporate structure across Fresh Produce, IT Placements & Clean Energy.", color: "text-blue-400" }
+                    ].map((item, i) => (
+                      <div key={i} className="p-5 rounded-xl bg-slate-900/40 border border-slate-850 hover:border-slate-800 transition-all flex flex-col justify-between">
+                        <div>
+                          <span className={`text-4xl font-serif font-bold ${item.color} block mb-2`}>{item.num}</span>
+                          <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-1.5">{item.title}</h4>
+                          <p className="text-slate-400 text-xs font-light leading-relaxed">{item.sub}</p>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-slate-850/60 flex items-center justify-between text-[9px] font-mono text-slate-500">
+                          <span>METRIC // CONGLOMERATE_INDEX</span>
+                          <span className="text-emerald-500/80">STATUS: STABLE</span>
+                        </div>
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+
+                {activeConsoleTab === "internships" && (
+                  <motion.div
+                    key="internships"
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 15 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid md:grid-cols-3 gap-6"
+                  >
+                    {[
+                      { num: "500+", title: "Placements & Staff", sub: "Direct operational and software engineering staff running critical hubs.", color: "text-emerald-400" },
+                      { num: "500+", title: "Developer Interns", sub: "Rural college graduates empowered through Avanthi placement placement programs.", color: "text-[var(--brand-gold)]" },
+                      { num: "100%", title: "Placements SLA Achievement", sub: "Robust practical pipelines feeding fresh talent directly into IT systems.", color: "text-indigo-400" }
+                    ].map((item, i) => (
+                      <div key={i} className="p-5 rounded-xl bg-slate-900/40 border border-slate-850 hover:border-slate-800 transition-all flex flex-col justify-between">
+                        <div>
+                          <span className={`text-4xl font-serif font-bold ${item.color} block mb-2`}>{item.num}</span>
+                          <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-1.5">{item.title}</h4>
+                          <p className="text-slate-400 text-xs font-light leading-relaxed">{item.sub}</p>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-slate-850/60 flex items-center justify-between text-[9px] font-mono text-slate-500">
+                          <span>METRIC // HUMAN_CAPITAL</span>
+                          <span className="text-emerald-500/80">STATUS: LIVE</span>
+                        </div>
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+
+                {activeConsoleTab === "slas" && (
+                  <motion.div
+                    key="slas"
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 15 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid md:grid-cols-3 gap-6"
+                  >
+                    {[
+                      { num: "99.95%", title: "Operational Uptime SLA", sub: "Consolidated enterprise level reliability across software & solar energy grid.", color: "text-emerald-400" },
+                      { num: "98%", title: "Logistics Fulfillment", sub: "Direct logistics channels linking agricultural hubs to grower warehousing.", color: "text-sky-400" },
+                      { num: "10+", title: "Regional Hubs Operating", sub: "Active dispatch and supply networks handling high-capacity commerce.", color: "text-[var(--brand-gold)]" }
+                    ].map((item, i) => (
+                      <div key={i} className="p-5 rounded-xl bg-slate-900/40 border border-slate-850 hover:border-slate-800 transition-all flex flex-col justify-between">
+                        <div>
+                          <span className={`text-4xl font-serif font-bold ${item.color} block mb-2`}>{item.num}</span>
+                          <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-1.5">{item.title}</h4>
+                          <p className="text-slate-400 text-xs font-light leading-relaxed">{item.sub}</p>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-slate-850/60 flex items-center justify-between text-[9px] font-mono text-slate-500">
+                          <span>METRIC // COMPLIANCE_SECURE</span>
+                          <span className="text-emerald-500/80">STATUS: COMPLIANT</span>
+                        </div>
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+          
         </div>
       </section>
 
       {/* Infinite Scrolling Operational Gallery (New Marquee Section) */}
-      <section className="py-20 bg-white border-b border-slate-100 relative overflow-hidden">
+      <section id="operational-gallery" className="py-20 bg-white border-b border-slate-100 relative overflow-hidden">
         <div className="container-x mb-12">
           <div className="max-w-3xl">
             <div className="kicker flex items-center gap-1.5">
@@ -558,7 +752,7 @@ function LeadershipPage() {
       </section>
 
       {/* Executive dossiers mapping Grid */}
-      <section className="py-24 bg-slate-50 relative border-b border-border">
+      <section id="executive-board" className="py-24 bg-slate-50 relative border-b border-border">
         <div className="container-x">
           <div className="space-y-24 max-w-6xl mx-auto">
             {leadersList.map((leader, i) => (

@@ -238,7 +238,7 @@ function Page() {
           src={img}
           alt="ArshithInfoTech high-tech workspace"
           style={{ y: heroY, scale: heroScale, opacity: heroOpacity }}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[28%_center] md:object-center"
         />
         <div
           className="absolute inset-0"
@@ -261,13 +261,13 @@ function Page() {
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div className="relative z-10 flex h-full items-end pb-24 md:pb-32">
-          <div className="container-x text-white">
+        <div className="relative z-10 flex h-full items-center md:items-end pb-16 md:pb-32 pt-24 md:pt-0">
+          <div className="container-x text-white w-full flex flex-col items-center md:items-start text-center md:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="kicker mb-6 flex items-center gap-2"
+              className="kicker mb-6 flex items-center gap-2 justify-center md:justify-start"
               style={{ color: accentColor }}
             >
               <Terminal className="w-4 h-4" />
@@ -277,15 +277,15 @@ function Page() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] max-w-5xl"
+              className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light leading-[1.1] md:leading-[0.95] max-w-5xl tracking-tight"
             >
-              Arshith<span className="italic font-medium text-sky-300">InfoTech</span>
+              Arshith<span className="block sm:inline italic font-medium text-sky-300">InfoTech</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-8 max-w-xl text-base md:text-lg text-white/80 font-light leading-relaxed"
+              className="mt-6 md:mt-8 max-w-xl text-sm md:text-lg text-white/90 font-light leading-relaxed"
             >
               Global technology consulting, digital marketing, and enterprise enablement — engineered for the cloud-first decade.
             </motion.p>
